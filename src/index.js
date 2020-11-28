@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Pokemon from "./components/Pokemon";
 import Images from "./components/Images";
 import Test from "./components/Test";
+import AsyncHook from "./components/AsyncHook";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +22,9 @@ ReactDOM.render(
         </Route>
         <Route path="/Test">
           <Test />
+        </Route>
+        <Route path="/AsyncHook">
+          <AsyncHook />
         </Route>
         <Route path="/">
           <App />

@@ -1,8 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import Pokemon from "./components/Pokemon";
-import Images from "./components/Images";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -13,6 +10,9 @@ function App() {
         </li>
         <li>
           <Link to="/Images">Images</Link>
+        </li>
+        <li>
+          <Link to="/AsyncHook">AsyncHook</Link>
         </li>
       </ul>
     </div>

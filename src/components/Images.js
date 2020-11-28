@@ -25,17 +25,23 @@ const Images = (state) => {
     URL = `${ROOT_URL}/${QUERYSTRING}`;
   }
 
+  console.log("aaa");
   useEffect(() => {
     const fechData = async () => {
-      const res = await axios(URL);
+      try {
+        const res = await axios(URL);
 
-      setBack_default(res.data.sprites.back_default);
-      setBack_shiny(res.data.sprites.back_shiny);
-      setFront_default(res.data.sprites.front_default);
-      setFront_shiny(res.data.sprites.front_shiny);
+        setBack_default(res.data.sprites.back_default);
+        setBack_shiny(res.data.sprites.back_shiny);
+        setFront_default(res.data.sprites.front_default);
+        setFront_shiny(res.data.sprites.front_shiny);
+      } catch (err) {
+        console.log("Not found");
+      }
     };
     fechData();
-  }, []);
+    console.log("axios get");
+  }, [URL]);
 
   const settings = {
     dots: true,
