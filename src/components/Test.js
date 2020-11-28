@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Images from "./Images";
 
 const Test = (state) => {
   const location = useLocation();
@@ -15,6 +16,7 @@ const Test = (state) => {
     <>
       {location.state.name} <br />
       {location.state.url}
+      <Images value={location.state.name} />
     </>
   );
 };

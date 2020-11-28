@@ -5,25 +5,37 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../index.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const ROOT_URL = "https://pokeapi.co/api/v2/pokemon";
 const QUERYSTRING = "wobbuffet";
-const URL = `${ROOT_URL}/${QUERYSTRING}`;
+//const URL = `${ROOT_URL}/${QUERYSTRING}`;
 
-const Images = () => {
+const Images = (state) => {
   const [back_default, setBack_default] = useState();
   const [back_shiny, setBack_shiny] = useState();
   const [front_default, setFront_default] = useState();
   const [front_shiny, setFront_shiny] = useState();
 
-  axios.get(URL).then((res) => {
-    setBack_default(res.data.sprites.back_default);
-    setBack_shiny(res.data.sprites.back_shiny);
-    setFront_default(res.data.sprites.front_default);
-    setFront_shiny(res.data.sprites.front_shiny);
-  });
+  var URL = "";
+  if (state.value !== undefined) {
+    URL = `${ROOT_URL}/${state.value}`;
+  } else {
+    URL = `${ROOT_URL}/${QUERYSTRING}`;
+  }
+
+  useEffect(() => {
+    const fechData = async () => {
+      const res = await axios(URL);
+
+      setBack_default(res.data.sprites.back_default);
+      setBack_shiny(res.data.sprites.back_shiny);
+      setFront_default(res.data.sprites.front_default);
+      setFront_shiny(res.data.sprites.front_shiny);
+    };
+    fechData();
+  }, []);
 
   const settings = {
     dots: true,
